@@ -121,7 +121,8 @@ CREATE TABLE `tp_role` (
 --
 
 INSERT INTO `tp_role` (`id`, `storage_id`, `name`, `is_add`, `is_del_own`, `is_read`, `is_del_all`, `is_read_all`, `is_admin`, `default`, `update_time`, `create_time`) VALUES
-(1, 1000, '超级管理员', 0, 0, 0, 0, 0, 1, 1, 1642174227, 0);
+(1, 1000, '超级管理员', 0, 0, 0, 0, 0, 1, 0, 1642174227, 0),
+(2, 1000, 'CY团队成员', 1, 1, 1, 0, 0, 0, 1, 1642174227, 0);
 
 -- --------------------------------------------------------
 
@@ -183,7 +184,15 @@ INSERT INTO `tp_system` (`id`, `key`, `attr`, `type`, `title`, `des`, `value`, `
 (13, 'is_show_storage', 'switch', 'basics', '展示存储桶', '向非管理员用户展示存储桶列表', '1', NULL),
 (14, 'is_show_role', 'switch', 'basics', '展示角色组', '向非管理员用户展示角色组列表', '1', NULL),
 (15, 'is_show_member', 'switch', 'basics', '展示团队成员', '向非管理员用户展示团队成员列表', '1', NULL),
-(16, 'reg_email_verify', 'switch', 'basics', '注册邮箱验证', '注册时是否需要邮箱验证码', '1', NULL);
+(16, 'reg_email_verify', 'switch', 'basics', '注册邮箱验证', '注册时是否需要邮箱验证码', '1', NULL),
+(17, 'oidc_enabled', 'switch', 'oidc', '启用OIDC登录', '开启后登录页将显示OIDC登录按钮', '0', NULL),
+(18, 'oidc_button_text', 'input', 'oidc', '登录按钮文案', NULL, '使用OIDC登录', NULL),
+(19, 'oidc_issuer', 'input', 'oidc', 'Issuer地址', '例如: https://sso.example.com/realms/main', '', NULL),
+(20, 'oidc_client_id', 'input', 'oidc', 'Client ID', NULL, '', NULL),
+(21, 'oidc_client_secret', 'password', 'oidc', 'Client Secret', NULL, '', NULL),
+(22, 'oidc_redirect_uri', 'input', 'oidc', '回调地址', '例如: https://your-domain/account/oidc/callback', '', NULL),
+(23, 'oidc_scope', 'input', 'oidc', 'Scope', NULL, 'openid email profile', NULL),
+(24, 'oidc_auto_domain', 'input', 'oidc', '自动开户邮箱域名', '仅该域名邮箱首次OIDC登录可自动开通账号', 'cyteam.cn', NULL);
 
 -- --------------------------------------------------------
 
@@ -313,7 +322,7 @@ ALTER TABLE `tp_storage`
 -- 使用表AUTO_INCREMENT `tp_system`
 --
 ALTER TABLE `tp_system`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- 使用表AUTO_INCREMENT `tp_user`

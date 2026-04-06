@@ -7,6 +7,7 @@ const Landing = React.lazy(() => import('./pages/Landing'));
 const Login = React.lazy(() => import('./pages/Login'));
 const Register = React.lazy(() => import('./pages/Register'));
 const Forget = React.lazy(() => import('./pages/Forget'));
+const OidcCallback = React.lazy(() => import('./pages/OidcCallback'));
 const Layout = React.lazy(() => import('./pages/Layout'));
 const Home = React.lazy(() => import('./pages/Home'));
 const Gallery = React.lazy(() => import('./pages/Gallery'));
@@ -99,6 +100,16 @@ export const router = createHashRouter([
       <GuestRoute>
         <React.Suspense fallback={<PageLoading />}>
           <Forget />
+        </React.Suspense>
+      </GuestRoute>
+    ),
+  },
+  {
+    path: '/oidc/callback',
+    element: (
+      <GuestRoute>
+        <React.Suspense fallback={<PageLoading />}>
+          <OidcCallback />
         </React.Suspense>
       </GuestRoute>
     ),

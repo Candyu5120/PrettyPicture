@@ -12,6 +12,8 @@ const defaultConfig: SystemConfig = {
   site_name: 'PrettyPicture',
   is_reg: 1,
   reg_email_verify: 1, // 默认开启邮箱验证
+  oidc_enabled: 0,
+  oidc_button_text: '使用OIDC登录',
   init_quota: 100,
   upload_max: 10,
   upload_rule: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp'],

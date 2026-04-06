@@ -12,6 +12,8 @@ Route::get('index', 'Index/index');
  */
 Route::group('account', function () {
 	Route::post('login', 'Account/login');
+	Route::get('oidc/start', 'Account/oidcStart');
+	Route::get('oidc/callback', 'Account/oidcCallback');
 	Route::post('sendCode', 'Account/sendCode');
 	Route::post('register', 'Account/register');
 	Route::post('forget', 'Account/forget');

@@ -24,18 +24,21 @@ export const Settings: React.FC = () => {
   const [basicSettings, setBasicSettings] = useState<SettingItem[]>([]);
   const [uploadSettings, setUploadSettings] = useState<SettingItem[]>([]);
   const [emailSettings, setEmailSettings] = useState<SettingItem[]>([]);
+  const [oidcSettings, setOidcSettings] = useState<SettingItem[]>([]);
 
   useEffect(() => {
     const loadSettings = async () => {
       try {
-        const [basicRes, uploadRes, emailRes] = await Promise.all([
+        const [basicRes, uploadRes, emailRes, oidcRes] = await Promise.all([
           setupApi.get('basics'),
           setupApi.get('upload'),
           setupApi.get('email'),
+          setupApi.get('oidc'),
         ]);
         setBasicSettings((basicRes as any).data || []);
         setUploadSettings((uploadRes as any).data || []);
         setEmailSettings((emailRes as any).data || []);
+        setOidcSettings((oidcRes as any).data || []);
       } catch {
         addToast('加载设置失败', 'error');
       } finally {
@@ -54,7 +57,8 @@ export const Settings: React.FC = () => {
     try {
       const currentSettings = activeTab === 'basics' ? basicSettings 
         : activeTab === 'upload' ? uploadSettings 
-        : emailSettings;
+        : activeTab === 'email' ? emailSettings
+        : oidcSettings;
       
       await setupApi.update({
         createData: currentSettings.map(s => ({ id: s.id, value: s.value }))
@@ -87,6 +91,7 @@ export const Settings: React.FC = () => {
     { key: 'basics', label: '基础设置' },
     { key: 'upload', label: '上传设置' },
     { key: 'email', label: '邮件设置' },
+    { key: 'oidc', label: 'OIDC设置' },
   ];
 
   const renderSettings = (settings: SettingItem[], setSettings: React.Dispatch<React.SetStateAction<SettingItem[]>>) => (
@@ -208,6 +213,16 @@ export const Settings: React.FC = () => {
               测试邮件将发送到您的登录邮箱
             </p>
           </div>
+        </Card>
+      )}
+
+      {/* OIDC settings */}
+      {activeTab === 'oidc' && (
+        <Card className="p-6">
+          {renderSettings(oidcSettings, setOidcSettings)}
+          <p className="text-xs text-foreground/60 mt-4">
+            回调地址建议配置为 /account/oidc/callback，自动开户仅对配置域名生效。
+          </p>
         </Card>
       )}
 

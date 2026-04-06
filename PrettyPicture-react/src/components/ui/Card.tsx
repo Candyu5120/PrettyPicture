@@ -15,7 +15,7 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   // 基础样式
   const baseStyles = `
-    bg-content1 rounded-large shadow-sm border border-divider
+    bg-content1/95 backdrop-blur-xl rounded-large shadow-sm border border-divider
     transition-all duration-200
   `;
 

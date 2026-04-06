@@ -4,6 +4,8 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // Use relative asset paths so deployment under /public (or any subpath) still works.
+  base: './',
   plugins: [react()],
   resolve: {
     alias: {

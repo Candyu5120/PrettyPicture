@@ -1,0 +1,60 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="960" y1="0" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9EDCFF"/>
+      <stop offset="0.45" stop-color="#C8F2FF"/>
+      <stop offset="1" stop-color="#E9FFF4"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1380 210) rotate(90) scale(170)">
+      <stop stop-color="#FFF9CC"/>
+      <stop offset="1" stop-color="#FFF9CC" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hill1" x1="960" y1="450" x2="960" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9AD9B5"/>
+      <stop offset="1" stop-color="#7FC7A3"/>
+    </linearGradient>
+    <linearGradient id="hill2" x1="960" y1="560" x2="960" y2="1020" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#78C4A2"/>
+      <stop offset="1" stop-color="#5DAD8D"/>
+    </linearGradient>
+    <linearGradient id="hill3" x1="960" y1="670" x2="960" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#64B394"/>
+      <stop offset="1" stop-color="#4A9C7E"/>
+    </linearGradient>
+    <filter id="blurSoft" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="2.5"/>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <circle cx="1380" cy="210" r="170" fill="url(#sun)"/>
+
+  <g opacity="0.7" filter="url(#blurSoft)">
+    <ellipse cx="200" cy="210" rx="140" ry="58" fill="#FFFFFF"/>
+    <ellipse cx="360" cy="190" rx="130" ry="52" fill="#FFFFFF"/>
+    <ellipse cx="1660" cy="220" rx="160" ry="64" fill="#FFFFFF"/>
+    <ellipse cx="1490" cy="250" rx="120" ry="46" fill="#FFFFFF"/>
+  </g>
+
+  <path d="M0 760C170 640 330 620 520 680C700 740 900 730 1120 620C1310 530 1570 520 1920 670V1080H0V760Z" fill="url(#hill1)"/>
+  <path d="M0 860C230 760 430 760 640 810C820 850 1020 830 1200 740C1400 640 1650 650 1920 760V1080H0V860Z" fill="url(#hill2)"/>
+  <path d="M0 930C220 860 460 860 720 910C910 950 1130 930 1320 870C1520 810 1710 810 1920 860V1080H0V930Z" fill="url(#hill3)"/>
+
+  <g opacity="0.55" fill="#F7B8D8">
+    <circle cx="270" cy="310" r="7"/>
+    <circle cx="320" cy="350" r="6"/>
+    <circle cx="390" cy="290" r="5"/>
+    <circle cx="460" cy="340" r="6"/>
+    <circle cx="520" cy="300" r="4"/>
+    <circle cx="1520" cy="290" r="6"/>
+    <circle cx="1600" cy="340" r="7"/>
+    <circle cx="1690" cy="300" r="5"/>
+    <circle cx="1760" cy="350" r="6"/>
+  </g>
+
+  <g opacity="0.4" stroke="#9AE4FF" stroke-width="2">
+    <path d="M120 980C360 900 640 900 900 980"/>
+    <path d="M1020 980C1260 910 1520 910 1800 980"/>
+  </g>
+</svg>
+

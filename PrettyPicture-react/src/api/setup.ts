@@ -13,7 +13,7 @@ interface SetupUpdateParams {
 }
 
 export const setupApi = {
-  // type: basics, email, upload
+  // type: basics, email, upload, oidc
   get: (type: string) => api.get(`/setup/index/${type}`),
   update: (data: SetupUpdateParams) => api.put('/setup/update', data),
   sendTest: () => api.post('/setup/sendTest'),

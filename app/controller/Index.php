@@ -14,6 +14,7 @@ class Index extends BaseController
     {
         $basics = SystemModel::where('type', "basics")->column('value', 'key');
         $upload = SystemModel::where('type', "upload")->column('value', 'key');
+        $oidc = SystemModel::where('type', "oidc")->column('value', 'key');
         
         return $this->create([
             "version"          => VERSION,
@@ -25,6 +26,8 @@ class Index extends BaseController
             "is_show_role"     => (int)($basics['is_show_role'] ?? 1),
             "is_show_member"   => (int)($basics['is_show_member'] ?? 1),
             "reg_email_verify" => (int)($basics['reg_email_verify'] ?? 1),
+            "oidc_enabled"     => (int)($oidc['oidc_enabled'] ?? 0),
+            "oidc_button_text" => $oidc['oidc_button_text'] ?? '使用OIDC登录',
         ], '成功', 200);
     }
 }

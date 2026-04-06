@@ -125,6 +125,8 @@ export interface SystemConfig {
   site_name: string;
   is_reg: number;
   reg_email_verify: number;
+  oidc_enabled: number;
+  oidc_button_text: string;
   init_quota: number;
   upload_max: number;
   upload_rule: string[];

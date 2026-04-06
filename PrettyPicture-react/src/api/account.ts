@@ -21,6 +21,7 @@ interface ForgetParams {
 
 export const accountApi = {
   login: (data: LoginParams) => api.post('/account/login', data),
+  oidcStart: () => api.get('/account/oidc/start'),
   register: (data: RegisterParams) => api.post('/account/register', data),
   sendCode: (email: string) => api.post('/account/sendCode', { email }),
   forget: (data: ForgetParams) => api.post('/account/forget', data),

@@ -17,6 +17,8 @@ function App() {
         // 处理 upload_rule 字段，从字符串转换为数组
         const configData = {
           ...res.data,
+          oidc_enabled: Number(res.data.oidc_enabled ?? 0),
+          oidc_button_text: res.data.oidc_button_text || '使用OIDC登录',
           upload_rule: typeof res.data.upload_rule === 'string' 
             ? res.data.upload_rule.split(',') 
             : res.data.upload_rule || []

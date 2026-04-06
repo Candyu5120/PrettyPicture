@@ -1,8 +1,13 @@
 import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
 
+const pagePath = window.location.pathname || '/';
+const defaultBase = pagePath.startsWith('/public') ? '/public' : '';
+const apiBase = (import.meta.env.VITE_API_BASE || defaultBase).replace(/\/$/, '');
+const loginUrl = `${apiBase}/#/login`;
+
 const api = axios.create({
-  baseURL: '',
+  baseURL: apiBase,
   timeout: 30000,
 });
 
@@ -32,7 +37,7 @@ api.interceptors.response.use(
     // code 为 -1 表示登录失效
     if (res.code === -1) {
       useAuthStore.getState().logout();
-      window.location.href = '/#/login';
+      window.location.href = loginUrl;
       return Promise.reject(res);
     }
     return Promise.reject(res);
@@ -40,7 +45,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401 || error.response?.data?.code === -1) {
       useAuthStore.getState().logout();
-      window.location.href = '/#/login';
+      window.location.href = loginUrl;
     }
     return Promise.reject(error.response?.data || error);
   }

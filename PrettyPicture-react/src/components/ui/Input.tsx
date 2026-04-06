@@ -44,7 +44,7 @@ export const Input: React.FC<InputProps> = ({
   // 输入框包装器样式
   const wrapperBaseStyles = `
     flex items-center gap-2 px-3 py-2
-    bg-content2 rounded-medium border
+    bg-content2/90 backdrop-blur-lg rounded-medium border
     transition-all duration-200
     focus-within:ring-2 focus-within:ring-primary/50
   `;
