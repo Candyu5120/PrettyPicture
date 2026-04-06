@@ -31,8 +31,8 @@ date_default_timezone_set('PRC');
 error_reporting(E_ALL & ~E_NOTICE);
 header('Content-Type: text/html; charset=UTF-8');
 
-$Title = "PrettyPicture安装向导";
-$Powered = "PrettyPicture";
+$Title = "CY图床安装向导";
+$Powered = "CY图床";
 $steps = array(
     '2' => '运行环境检测',
     '3' => '安装参数设置',

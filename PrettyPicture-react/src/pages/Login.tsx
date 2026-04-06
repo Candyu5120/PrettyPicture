@@ -4,10 +4,13 @@ import { Button, Card } from '../components/ui';
 import { accountApi } from '../api/account';
 import { useConfigStore, useUIStore } from '../store';
 
+const LOGO_URL = 'https://img.ocyo.cn/PrettyPicture/2026/04/ee0b80da6f7706a7.png';
+
 export const Login: React.FC = () => {
   const [searchParams] = useSearchParams();
   const { config } = useConfigStore();
   const { addToast } = useUIStore();
+  const siteName = config.site_name || 'CY图床';
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const hasError = !loading && !!error;
@@ -49,8 +52,11 @@ export const Login: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md p-8 text-center space-y-4">
+        <div className="flex justify-center">
+          <img src={LOGO_URL} alt={siteName} className="w-16 h-16 rounded-2xl object-cover shadow-lg" />
+        </div>
         <h1 className={`text-2xl font-bold ${hasError ? 'text-danger' : 'text-foreground'}`}>
-          {hasError ? '发生错误' : '正在跳转统一身份认证'}
+          {hasError ? '发生错误' : `正在跳转 ${siteName} 统一身份认证`}
         </h1>
         <p className="text-foreground/60">
           {loading ? '请稍候，正在发起 OIDC 登录...' : (error || '请点击下方按钮继续登录')}

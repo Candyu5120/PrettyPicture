@@ -9,9 +9,12 @@ interface ConfigState {
 }
 
 const defaultConfig: SystemConfig = {
-  site_name: 'PrettyPicture',
+  site_name: 'CY图床',
   is_reg: 1,
   reg_email_verify: 1, // 默认开启邮箱验证
+  record_show: 0,
+  record_icp: '',
+  record_public: '',
   oidc_enabled: 0,
   oidc_button_text: '使用OIDC登录',
   init_quota: 100,

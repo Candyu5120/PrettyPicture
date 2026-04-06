@@ -156,7 +156,7 @@ class Account extends BaseController
         $code = mt_rand(1000, 9999);
 
         try {
-            (new EmailClass)->send_mail($data['email'], "PrettyPicture验证", '您的验证码为：' . $code);
+            (new EmailClass)->send_mail($data['email'], "CY图床验证", '您的验证码为：' . $code);
             (new CodeModel)->save([
                 'email' => $data['email'],
                 'code'  => $code,

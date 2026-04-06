@@ -3,19 +3,29 @@ import { Link } from 'react-router-dom';
 import { Button } from '../components/ui';
 import { useConfigStore } from '../store';
 
+const LOGO_URL = 'https://img.ocyo.cn/PrettyPicture/2026/04/ee0b80da6f7706a7.png';
+
+const getPublicBeianHref = (record: string): string => {
+  const recordCode = record.replace(/\D/g, '');
+  return recordCode ? `https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${recordCode}` : 'https://www.beian.gov.cn/';
+};
+
 export const Landing: React.FC = () => {
   const { config } = useConfigStore();
+  const siteName = config.site_name || 'CY图床';
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-28">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-divider">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-white font-bold text-sm">PP</span>
-            </div>
-            <span className="font-semibold text-foreground text-lg">PrettyPicture</span>
+            <img
+              src={LOGO_URL}
+              alt={siteName}
+              className="w-8 h-8 rounded-full object-cover shadow-sm"
+            />
+            <span className="font-semibold text-foreground text-lg">{siteName}</span>
           </div>
           <div className="flex items-center gap-3">
             <Link to="/login">
@@ -33,8 +43,15 @@ export const Landing: React.FC = () => {
       {/* Hero */}
       <section className="pt-32 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <img src={LOGO_URL} alt={siteName} className="w-16 h-16 rounded-2xl object-cover shadow-lg" />
+            <div className="text-left">
+              <p className="text-sm text-foreground/60">欢迎来到</p>
+              <h1 className="text-3xl md:text-5xl font-bold text-foreground">{siteName}</h1>
+            </div>
+          </div>
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            简洁优雅的
+            自然清新的
             <span className="text-primary">图床服务</span>
           </h1>
           <p className="text-lg md:text-xl text-foreground/60 mb-10 max-w-2xl mx-auto">
@@ -132,9 +149,40 @@ export const Landing: React.FC = () => {
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-divider">
         <div className="max-w-6xl mx-auto text-center text-sm text-foreground/50">
-          <p>© {new Date().getFullYear()} PrettyPicture. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {siteName}. All rights reserved.</p>
         </div>
       </footer>
+
+      {config.record_show === 1 && (config.record_icp || config.record_public) && (
+        <div className="fixed bottom-4 left-0 right-0 z-40 px-4 pointer-events-none">
+          <div className="mx-auto max-w-4xl pointer-events-auto">
+            <div className="rounded-full border border-divider bg-background/70 backdrop-blur-2xl shadow-[0_18px_50px_rgba(56,189,248,0.16)] px-5 py-3 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-foreground/70">
+              {config.record_icp && (
+                <a
+                  href="https://beian.miit.gov.cn/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  ICP备案：{config.record_icp}
+                </a>
+              )}
+              {config.record_public && (
+                <a
+                  href={getPublicBeianHref(config.record_public)}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
+                  aria-label={`公安网备：${config.record_public}`}
+                >
+                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-primary/15 text-primary text-[10px] font-bold">安</span>
+                  <span>公安网备：{config.record_public}</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

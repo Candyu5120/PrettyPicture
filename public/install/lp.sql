@@ -185,14 +185,18 @@ INSERT INTO `tp_system` (`id`, `key`, `attr`, `type`, `title`, `des`, `value`, `
 (14, 'is_show_role', 'switch', 'basics', '展示角色组', '向非管理员用户展示角色组列表', '1', NULL),
 (15, 'is_show_member', 'switch', 'basics', '展示团队成员', '向非管理员用户展示团队成员列表', '1', NULL),
 (16, 'reg_email_verify', 'switch', 'basics', '注册邮箱验证', '注册时是否需要邮箱验证码', '1', NULL),
-(17, 'oidc_enabled', 'switch', 'oidc', '启用OIDC登录', '开启后登录页将显示OIDC登录按钮', '0', NULL),
-(18, 'oidc_button_text', 'input', 'oidc', '登录按钮文案', NULL, '使用OIDC登录', NULL),
-(19, 'oidc_issuer', 'input', 'oidc', 'Issuer地址', '例如: https://sso.example.com/realms/main', '', NULL),
-(20, 'oidc_client_id', 'input', 'oidc', 'Client ID', NULL, '', NULL),
-(21, 'oidc_client_secret', 'password', 'oidc', 'Client Secret', NULL, '', NULL),
-(22, 'oidc_redirect_uri', 'input', 'oidc', '回调地址', '例如: https://your-domain/account/oidc/callback', '', NULL),
-(23, 'oidc_scope', 'input', 'oidc', 'Scope', NULL, 'openid email profile', NULL),
-(24, 'oidc_auto_domain', 'input', 'oidc', '自动开户邮箱域名', '仅该域名邮箱首次OIDC登录可自动开通账号', 'cyteam.cn', NULL);
+(17, 'site_name', 'input', 'basics', '站点名称', '站点顶部与页面标题显示名称', 'CY图床', NULL),
+(18, 'record_show', 'switch', 'basics', '显示备案信息', '是否在首页展示 ICP 和公安网备信息', '0', NULL),
+(19, 'record_icp', 'input', 'basics', 'ICP备案号', '例如：京ICP备12345678号-1', '', NULL),
+(20, 'record_public', 'input', 'basics', '公安网备号', '例如：京公网安备11000002000001号', '', NULL),
+(21, 'oidc_enabled', 'switch', 'oidc', '启用OIDC登录', '开启后登录页将显示OIDC登录按钮', '0', NULL),
+(22, 'oidc_button_text', 'input', 'oidc', '登录按钮文案', NULL, '使用OIDC登录', NULL),
+(23, 'oidc_issuer', 'input', 'oidc', 'Issuer地址', '例如: https://sso.example.com/realms/main', '', NULL),
+(24, 'oidc_client_id', 'input', 'oidc', 'Client ID', NULL, '', NULL),
+(25, 'oidc_client_secret', 'password', 'oidc', 'Client Secret', NULL, '', NULL),
+(26, 'oidc_redirect_uri', 'input', 'oidc', '回调地址', '例如: https://your-domain/account/oidc/callback', '', NULL),
+(27, 'oidc_scope', 'input', 'oidc', 'Scope', NULL, 'openid email profile', NULL),
+(28, 'oidc_auto_domain', 'input', 'oidc', '自动开户邮箱域名', '仅该域名邮箱首次OIDC登录可自动开通账号', 'cyteam.cn', NULL);
 
 -- --------------------------------------------------------
 
@@ -322,7 +326,7 @@ ALTER TABLE `tp_storage`
 -- 使用表AUTO_INCREMENT `tp_system`
 --
 ALTER TABLE `tp_system`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- 使用表AUTO_INCREMENT `tp_user`

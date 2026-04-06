@@ -125,6 +125,9 @@ export interface SystemConfig {
   site_name: string;
   is_reg: number;
   reg_email_verify: number;
+  record_show: number;
+  record_icp: string;
+  record_public: string;
   oidc_enabled: number;
   oidc_button_text: string;
   init_quota: number;

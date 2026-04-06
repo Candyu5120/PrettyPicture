@@ -95,7 +95,7 @@ export const Register: React.FC = () => {
       <Card className="w-full max-w-md p-8">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-foreground mb-2">创建账号</h1>
-          <p className="text-foreground/60">注册 PrettyPicture 图床账号</p>
+          <p className="text-foreground/60">注册 CY图床 账号</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuthStore, useUIStore, useConfigStore } from '../store';
 
+const LOGO_URL = 'https://img.ocyo.cn/PrettyPicture/2026/04/ee0b80da6f7706a7.png';
+
 interface NavItem {
   path: string;
   label: string;
@@ -116,6 +118,7 @@ export const Sidebar: React.FC = () => {
   const { user } = useAuthStore();
   const { theme, toggleTheme, sidebarOpen, setSidebarOpen } = useUIStore();
   const { config } = useConfigStore();
+  const siteName = config.site_name || 'CY图床';
   
   // 检查 is_admin === 1 (数字类型)
   const isAdmin = user?.role?.is_admin === 1;
@@ -162,10 +165,8 @@ export const Sidebar: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center justify-between h-16 px-4 border-b border-divider">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-white font-bold text-sm">PP</span>
-              </div>
-              <span className="font-semibold text-foreground">PrettyPicture</span>
+              <img src={LOGO_URL} alt={siteName} className="w-8 h-8 rounded-full object-cover shadow-sm" />
+              <span className="font-semibold text-foreground">{siteName}</span>
             </div>
             <button
               onClick={() => setSidebarOpen(false)}

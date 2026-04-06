@@ -19,6 +19,7 @@ class Index extends BaseController
         return $this->create([
             "version"          => VERSION,
             "time"             => RELRAASE_TIME,
+            "site_name"        => $basics['site_name'] ?? 'CY图床',
             "is_reg"           => (int)($basics['is_reg'] ?? 1),
             "upload_max"       => (int)($upload['upload_max'] ?? 50) * 1024,
             "upload_rule"      => $upload['upload_rule'] ?? 'jpg,jpeg,gif,png,ico,svg,webp',
@@ -26,6 +27,9 @@ class Index extends BaseController
             "is_show_role"     => (int)($basics['is_show_role'] ?? 1),
             "is_show_member"   => (int)($basics['is_show_member'] ?? 1),
             "reg_email_verify" => (int)($basics['reg_email_verify'] ?? 1),
+            "record_show"      => (int)($basics['record_show'] ?? 0),
+            "record_icp"       => $basics['record_icp'] ?? '',
+            "record_public"    => $basics['record_public'] ?? '',
             "oidc_enabled"     => (int)($oidc['oidc_enabled'] ?? 0),
             "oidc_button_text" => $oidc['oidc_button_text'] ?? '使用OIDC登录',
         ], '成功', 200);

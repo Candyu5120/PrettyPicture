@@ -25,13 +25,13 @@ class EmailClass
         $mail->Port = (int)$data['email_port'];
         $mail->Username = $data['email_usr'];
         $mail->Password = $data['email_pwd'];
-        $mail->SetFrom($data['email_usr'], 'PrettyPicture');
+        $mail->SetFrom($data['email_usr'], 'CY图床');
         $mail->AddReplyTo('', '');
         $mail->Subject = $subject;
 
         $body = str_replace(
             ['[网站名称]', '[网站地址]', '[标题]', '[内容]'],
-            ['PrettyPicture', '', $subject, $content],
+            ['CY图床', '', $subject, $content],
             $email_template
         );
 
